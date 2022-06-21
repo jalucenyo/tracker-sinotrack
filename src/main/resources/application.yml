@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: tracker-sinotrack
+
+logging:
+  level:
+    com.jalc.trackersinotrack: debug
+
+cloud:
+  aws:
+    region:
+      static: eu-west-1
+    stack:
+      auto: false
+    sqs:
+      region: eu-west-1
+    credentials:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+
+queue:
+  destination: tracker-in
+
+inbound:
+  tcp-port: 5000
