@@ -1,6 +1,6 @@
-package com.jalc.trackersinotrack.application.rest
+package com.lucenyo.tracker.sinotrack.application.rest
 
-import com.jalc.trackersinotrack.domain.usecases.ReceivedLocationUseCase
+import com.lucenyo.tracker.sinotrack.domain.usecases.ReceivedLocationUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

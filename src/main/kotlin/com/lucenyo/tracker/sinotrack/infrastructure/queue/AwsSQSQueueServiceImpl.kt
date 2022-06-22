@@ -1,8 +1,8 @@
-package com.jalc.trackersinotrack.infrastructure.queue
+package com.lucenyo.tracker.sinotrack.infrastructure.queue
 
 import com.amazonaws.services.sqs.AmazonSQSAsync
-import com.jalc.trackersinotrack.domain.models.Location
-import com.jalc.trackersinotrack.domain.queue.LocationQueueService
+import com.lucenyo.tracker.sinotrack.domain.models.Location
+import com.lucenyo.tracker.sinotrack.domain.queue.LocationQueueService
 import io.awspring.cloud.messaging.core.QueueMessagingTemplate
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,11 +1,11 @@
-package com.jalc.trackersinotrack
+package com.lucenyo.tracker.sinotrack
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class TrackerSinotrackApplication
+class Application
 
 fun main(args: Array<String>) {
-  runApplication<TrackerSinotrackApplication>(*args)
+  runApplication<Application>(*args)
 }

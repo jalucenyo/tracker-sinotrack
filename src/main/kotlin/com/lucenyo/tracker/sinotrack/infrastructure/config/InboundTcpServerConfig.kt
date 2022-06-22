@@ -1,6 +1,6 @@
-package com.jalc.trackersinotrack.infrastructure.config
+package com.lucenyo.tracker.sinotrack.infrastructure.config
 
-import com.jalc.trackersinotrack.domain.usecases.ReceivedLocationUseCase
+import com.lucenyo.tracker.sinotrack.domain.usecases.ReceivedLocationUseCase
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
@@ -13,6 +13,9 @@ import org.springframework.integration.ip.dsl.Tcp
 import org.springframework.integration.ip.tcp.connection.AbstractServerConnectionFactory
 import org.springframework.integration.ip.tcp.connection.TcpNioServerConnectionFactory
 import org.springframework.integration.ip.tcp.serializer.ByteArrayCrLfSerializer
+import org.springframework.integration.ip.tcp.serializer.ByteArrayLfSerializer
+import org.springframework.integration.ip.tcp.serializer.ByteArrayRawSerializer
+import org.springframework.integration.ip.tcp.serializer.ByteArraySingleTerminatorSerializer
 
 @Configuration
 @EnableIntegration
@@ -28,14 +31,14 @@ class InboundTcpServerConfig(
   fun inboundData(): IntegrationFlow {
     return IntegrationFlows.from(Tcp.inboundGateway(connectionFactory()))
       .handle<ByteArray> { payload, headers ->
-        log.debug("TCP Received: {}", String(payload))
+        log.debug("TCP Received: {} ", String(payload))
         receivedLocationUseCase(String(payload))
       }.get()
   }
 
   fun connectionFactory(): AbstractServerConnectionFactory {
     val server = TcpNioServerConnectionFactory(tcpServerPort)
-    server.deserializer = ByteArrayCrLfSerializer()
+    server.deserializer = ByteArrayRawSerializer()
     return server
   }
 

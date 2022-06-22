@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.jalc</groupId>
+    <groupId>com.lucenyo</groupId>
     <artifactId>tracker-sinotrack</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tracker-sinotrack</name>
@@ -70,6 +70,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>tracker-sinotrack</finalName>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
