@@ -12,10 +12,7 @@ import org.springframework.integration.dsl.IntegrationFlows
 import org.springframework.integration.ip.dsl.Tcp
 import org.springframework.integration.ip.tcp.connection.AbstractServerConnectionFactory
 import org.springframework.integration.ip.tcp.connection.TcpNioServerConnectionFactory
-import org.springframework.integration.ip.tcp.serializer.ByteArrayCrLfSerializer
-import org.springframework.integration.ip.tcp.serializer.ByteArrayLfSerializer
 import org.springframework.integration.ip.tcp.serializer.ByteArrayRawSerializer
-import org.springframework.integration.ip.tcp.serializer.ByteArraySingleTerminatorSerializer
 
 @Configuration
 @EnableIntegration
@@ -30,7 +27,7 @@ class InboundTcpServerConfig(
   @Bean
   fun inboundData(): IntegrationFlow {
     return IntegrationFlows.from(Tcp.inboundGateway(connectionFactory()))
-      .handle<ByteArray> { payload, headers ->
+      .handle<ByteArray> { payload, _ ->
         log.debug("TCP Received: {} ", String(payload))
         receivedLocationUseCase(String(payload))
       }.get()
