@@ -21,11 +21,11 @@ class ReceivedLocationUseCase(
 
   operator fun invoke(payload: String){
 
-    log.debug("Received location payload: {}", payload)
+    log.info("Received location payload: {}", payload)
 
     try {
 
-      payload.split("#")
+      payload.split("*")
         .filter { it.isNotBlank() }
         .map {
           Location(
